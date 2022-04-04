@@ -1,208 +1,586 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DevCodes</title>
     <link href="prism/prism-black.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  </head>
 
-
-<!-- body -->
-<body>
-
-
+  <!-- body -->
+  <body>
     <!-- navbar -->
 
-    <nav class="px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800  sticky top-0 z-50  ">
-        <div class="container flex flex-wrap justify-between items-center mx-auto">
-          <h2 class="flex items-center">
-              <img src="images/logo192.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-              <span class="self-center text-xl font-semibold whitespace-nowrap text-black">DevCodes</span>
-          </h2>
-          <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 " aria-controls="mobile-menu" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-          </button>
-          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
-            <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-              <li>
-                <a href="home.html" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
-              </li>
-              <li>
-                <a href="contact.html" class="block py-2 pr-4 pl-3 text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-              </li>
-            </ul>
-          </div>
+    <nav class="px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 sticky top-0 z-50">
+      <div
+        class="container flex flex-wrap justify-between items-center mx-auto"
+      >
+        <h2 class="flex items-center">
+          <img
+            src="images/logo192.png"
+            class="mr-3 h-6 sm:h-9"
+            alt="Flowbite Logo"
+          />
+          <span
+            class="self-center text-xl font-semibold whitespace-nowrap text-black"
+            >DevCodes</span
+          >
+        </h2>
+        <button
+          data-collapse-toggle="mobile-menu"
+          type="button"
+          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <svg
+            class="hidden w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+          <ul
+            class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+          >
+            <li>
+              <a
+                href="home.html"
+                class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                class="block py-2 pr-4 pl-3 text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Contact</a
+              >
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-
-
-      
     <!-- Main heading -->
 
     <div class="flex justify-center">
-        <h1 class="bg-white font-bold mt-5 text-5xl p-5">Integrating a Payment Gateway using Razorpay</h1>
+      <h1 class="bg-white font-bold mt-5 text-5xl p-5">
+        Integrating a Payment Gateway using Razorpay
+      </h1>
     </div>
-
-
-
 
     <!-- content and image -->
 
     <div class="flex justify-space p-8">
-        <p class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium">How many times have you went to your favourite e-commmerce or food ordering website and ordered using payment options like UPI, Debit Card, Credit Card, etc ? With this tutorial you can implement the same in your own web-app.</p>
+      <p
+        class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium"
+      >
+        How many times have you went to your favourite e-commmerce or food
+        ordering website and ordered using payment options like UPI, Debit Card,
+        Credit Card, etc ? With this tutorial you can implement the same in your
+        own web-app.
+      </p>
 
-        <img src="images/fb-razorpay@2x.png" alt="logo" class="mr-12 ml-16 w-80" />
+      <img
+        src="images/fb-razorpay@2x.png"
+        alt="logo"
+        class="mr-12 ml-16 w-80"
+      />
     </div>
-
 
     <!-- Language and Framework Used -->
 
-
-    <div class="bg-white ml-10  w-fit p-3">
-        <p class="text-lg"><strong>Language/Framework used: </strong>Javascript, NodeJS</p>
-        <p class="text-lg"><strong>Last Updated: </strong>15-03-2022</p>
+    <div class="bg-white ml-10 w-fit p-3">
+      <p class="text-lg">
+        <strong>Language/Framework used: </strong>Javascript, NodeJS
+      </p>
+      <p class="text-lg"><strong>Last Updated: </strong>15-03-2022</p>
     </div>
-
 
     <!-- Steps -->
 
     <div class="ml-10 my-10 mr-12 flex flex-col">
-        <h3 class="text-xl"><strong>Step -1</strong></h3>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg">Lorem ipsum dolor sit amet. Est dolorem placeat cum voluptate adipisci et dicta repellendus vel quisquam quod? Et totam numquam in sapiente sapiente et facilis dolore sed quis dolorem et distinctio ipsa sed molestiae explicabo! Et magnam alias aut distinctio aperiam non voluptas nihil aut dolorum fugit aut suscipit dolor qui aliquam ullam. Et laboriosam rerum ea tempora itaque est dolorem facere. Lorem ipsum dolor sit amet. Est dolorem placeat cum voluptate adipisci et dicta repellendus vel quisquam quod? Et totam numquam in sapiente sapiente et facilis dolore sed quis dolorem et distinctio ipsa sed molestiae explicabo! Et magnam alias aut distinctio aperiam non voluptas nihil aut dolorum fugit aut suscipit dolor qui aliquam ullam. Et laboriosam rerum ea tempora itaque est dolorem facere.</p>
-        <pre>
-            <code class="language-html">
-    
-                &#x3C;!DOCTYPE html&#x3E;
-                &#x3C;html&#x3E;
-                
-                  &#x3C;head&#x3E;
-                    &#x3C;meta charset=&#x22;utf-8&#x22;&#x3E;
-                    &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;IE=edge&#x22;&#x3E;
-                    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1&#x22;&#x3E;
-                    &#x3C;title&#x3E;Buy a book&#x3C;/title&#x3E;
-                    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://unpkg.com/bulma@0.9.0/css/bulma.min.css&#x22; /&#x3E;
-                  &#x3C;/head&#x3E;
-                
-                  &#x3C;body&#x3E;
-                
-                &#x9;&#x9;&#x3C;section class=&#x22;hero is-link is-fullheight&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;div class=&#x22;hero-body is-centered&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;container&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;columns is-centered is-vcentered&#x22;&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;column is-6&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;p class=&#x22;title is-size-1&#x22;&#x3E;Just a book&#x3C;/p&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;p class=&#x22;subtitle is-size-4&#x22;&#x3E;Get this book just for &#x20B9;500&#x3C;/p&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;button class=&#x22;button is-link is-light is-medium&#x22;&#x3E;Get the book&#x3C;/button&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;column is-5&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;figure class=&#x22;image&#x22;&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;img src=&#x22;https://images.unsplash.com/photo-1589998059171-988d887df646?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#x26;ixlib=rb-1.2.1&#x22;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;style=&#x22;border-radius: 10px&#x22; alt=&#x22;&#x22;&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/figure&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x3C;/section&#x3E;
-                
-                  &#x3C;/body&#x3E;
-                
-                &#x3C;/html&#x3E;
-                
-    
+      <h3 class="text-xl"><strong>Step -1</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Create a folder and open it in vs-code. In the terminal run the
+        following commands to download the necessary packages.
+      </p>
+      <pre>
+            <code class="language-javascript">
+
+              npm init
+              npm i express
+              npm i razorpay
+              npm i nodemon
+              npm i ejs
+  
             </code>
         </pre>
     </div>
 
     <div class="ml-10 my-10 mr-12 flex flex-col">
-        <h3 class="text-xl"><strong>Step -2</strong></h3>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg">Lorem ipsum dolor sit amet. Est dolorem placeat cum voluptate adipisci et dicta repellendus vel quisquam quod? Et totam numquam in sapiente sapiente et facilis dolore sed quis dolorem et distinctio ipsa sed molestiae explicabo! Et magnam alias aut distinctio aperiam non voluptas nihil aut dolorum fugit aut suscipit dolor qui aliquam ullam. Et laboriosam rerum ea tempora itaque est dolorem facere.</p>
-        <pre>
-            <code class="language-html">
+      <h3 class="text-xl"><strong>Step -2</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        In the folder, create a file index.js and paste the following startup
+        code to set up the packages and run the server. 
+      </p>
+      <pre>
+            <code class="language-javascript">
+
+const express=require("express");
+const Razorpay=require("razorpay");
+
+let app=express(); 
+
+app.listen(3000,function()
+{
     
-                &#x3C;!DOCTYPE html&#x3E;
-                &#x3C;html&#x3E;
-                
-                  &#x3C;head&#x3E;
-                    &#x3C;meta charset=&#x22;utf-8&#x22;&#x3E;
-                    &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;IE=edge&#x22;&#x3E;
-                    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1&#x22;&#x3E;
-                    &#x3C;title&#x3E;Buy a book&#x3C;/title&#x3E;
-                    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://unpkg.com/bulma@0.9.0/css/bulma.min.css&#x22; /&#x3E;
-                  &#x3C;/head&#x3E;
-                
-                  &#x3C;body&#x3E;
-                
-                &#x9;&#x9;&#x3C;section class=&#x22;hero is-link is-fullheight&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;div class=&#x22;hero-body is-centered&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;container&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;columns is-centered is-vcentered&#x22;&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;column is-6&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;p class=&#x22;title is-size-1&#x22;&#x3E;Just a book&#x3C;/p&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;p class=&#x22;subtitle is-size-4&#x22;&#x3E;Get this book just for &#x20B9;500&#x3C;/p&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;button class=&#x22;button is-link is-light is-medium&#x22;&#x3E;Get the book&#x3C;/button&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;column is-5&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;figure class=&#x22;image&#x22;&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;img src=&#x22;https://images.unsplash.com/photo-1589998059171-988d887df646?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#x26;ixlib=rb-1.2.1&#x22;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;style=&#x22;border-radius: 10px&#x22; alt=&#x22;&#x22;&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/figure&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x3C;/section&#x3E;
-                
-                  &#x3C;/body&#x3E;
-                
-                &#x3C;/html&#x3E;
-                
+  console.log("server on port 3000");
+
+});
+
     
             </code>
         </pre>
     </div>
-
 
     <div class="ml-10 my-10 mr-12 flex flex-col">
       <h3 class="text-xl"><strong>Step -3</strong></h3>
-      <p class="bg-white mt-3 mb-1 p-3 text-lg">Lorem  hgguhgjnf javasciptipsum dolor sit amet. Est dolorem placeat cum voluptate adipisci et dicta repellendus vel quisquam quod? Et totam numquam in sapiente sapiente et facilis dolore sed quis dolorem et distinctio ipsa sed molestiae explicabo! Et magnam alias aut distinctio aperiam non voluptas nihil aut dolorum fugit aut suscipit dolor qui aliquam ullam. Et laboriosam rerum ea tempora itaque est dolorem facere.</p>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Add the following startup code for ejs in index.js file.
+      </p>
       <pre>
           <code class="language-javascript">
+            app.set('views','views');
+            app.set('view engine', 'ejs');
+            app.use(express.urlencoded({extended:false}));
+          </code>
+      </pre>
+    </div>
 
-            var instance = new Razorpay({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
-
-            var options = {
-              amount: 50000,  // amount in the smallest currency unit
-              currency: "INR",
-              receipt: "order_rcptid_11"
-            };
-            instance.orders.create(options, function(err, order) {
-            console.log(order);
-            });
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -4</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Create a folder with the name "views" inside the main folder and make a file named razorpay.ejs inside this views folder. Copy the following HTML code inside razorpay.ejs . This HTML code is just a template from where user can buy a book.
+      </p>
+      <pre>
+          <code class="language-html">
+            &#x3C;!DOCTYPE html&#x3E;
+            &#x3C;html&#x3E;
+            
+              &#x3C;head&#x3E;
+                &#x3C;meta charset=&#x22;utf-8&#x22;&#x3E;
+                &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;IE=edge&#x22;&#x3E;
+                &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1&#x22;&#x3E;
+                &#x3C;title&#x3E;Buy a book&#x3C;/title&#x3E;
+                &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://unpkg.com/bulma@0.9.0/css/bulma.min.css&#x22; /&#x3E;
+              &#x3C;/head&#x3E;
+            
+              &#x3C;body&#x3E;
+            
+            &#x9;&#x9;&#x3C;section class=&#x22;hero is-link is-fullheight&#x22;&#x3E;
+            &#x9;&#x9;&#x9;&#x3C;div class=&#x22;hero-body is-centered&#x22;&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;container&#x22;&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;columns is-centered is-vcentered&#x22;&#x3E;
+            
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;column is-6&#x22;&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;p class=&#x22;title is-size-1&#x22;&#x3E;Just a book&#x3C;/p&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;p class=&#x22;subtitle is-size-4&#x22;&#x3E;Get this book just for &#x20B9;500&#x3C;/p&#x3E;
+            
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;button class=&#x22;button is-link is-light is-medium&#x22;&#x3E;Get the book&#x3C;/button&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
+            
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;div class=&#x22;column is-5&#x22;&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;figure class=&#x22;image&#x22;&#x3E;
+            
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;img src=&#x22;https://images.unsplash.com/photo-1589998059171-988d887df646?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#x26;ixlib=rb-1.2.1&#x22;
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;style=&#x22;border-radius: 10px&#x22; alt=&#x22;&#x22;&#x3E;
+            
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/figure&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
+            
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
+            &#x9;&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
+            &#x9;&#x9;&#x9;&#x3C;/div&#x3E;
+            &#x9;&#x3C;/section&#x3E;
+            
+              &#x3C;/body&#x3E;
+            
+            &#x3C;/html&#x3E;
 
           </code>
       </pre>
-  </div>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -5</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Copy the following code in index.js to render the html file and then run the server to see the changes. 
+      </p>
+      <pre>
+          <code class="language-javascript">
+            app.get("/",function(req,res){
+
+              res.render("razorpay.ejs");
+
+            });
+          </code>
+      </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -6</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Now, go to the official razorpay website and generate API keys in test mode. Save both the key_id and key_secret generated.
+      </p>
+      <!-- <pre>
+          <code class="language-javascript">
+            app.set('views','views');
+            app.set('view engine', 'ejs');
+            app.use(express.urlencoded({extended:false}));
+          </code>
+      </pre> -->
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -7</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Copy the following code in index.js to initialise razorpay. Please note you have to replace the key_id and key_secret with your own keys for the payment to reflect in your account.
+      </p>
+      <pre>
+          <code class="language-javascript">
+            const razorpay=new Razorpay({
+
+              key_id: "rzp_test_uOlQOrpdrVORzm",
+              key_secret:"bqLHAV7Ih5mia212Hnx4h7Qi",
+            });
+            
+          </code>
+      </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -8</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Now Create an order from the server for which the user will pay. It will contain the amount to be paid and the currency. A unique order is created for every payment and the order_id generated has to be passed to checkout. Also note the amount specified here is in paise. Copy the following code in index.js
+      </p>
+      <pre>
+          <code class="language-javascript">
+            app.post("/order", function(req,res){
+
+              var options = {
+                amount: 50000 ,
+                currency: "INR" ,
+            
+              };
+            
+              razorpay.orders.create(options, function(err, order){
+                
+                console.log(order);
+                res.json(order);  //to send the json file back to frontend
+              });
+            });
+          </code>
+      </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -9</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Import axios and razorpay checkout js file using the following code. Copy it in razorpay.ejs file inside the head tag.
+      </p>
+      <pre>
+          <code class="language-html">
+            &#x3C;script src=&#x22;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+            &#x3C;script src=&#x22;https://checkout.razorpay.com/v1/checkout.js&#x22;&#x3E;&#x3C;/script&#x3E;
+          </code>
+      </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -10</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        axios is used here to create a post request. <br>
+        Now we use the following code for our front-end when the "Get the book" button is clicked. <br>
+        Here the order_id is taken from our server which has to be unique. <br>
+        The callback_url stores the route to which we will be directed after a payment. <br>
+        Also set the id for the button "Get the book"
+
+      </p> 
+      <pre>
+          <code class="language-html">
+            &#x3C;!DOCTYPE html&#x3E;
+            &#x3C;html&#x3E;
+            
+            &#x3C;head&#x3E;
+                &#x3C;meta charset=&#x22;utf-8&#x22;&#x3E;
+                &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;IE=edge&#x22;&#x3E;
+                &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1&#x22;&#x3E;
+                &#x3C;title&#x3E;Buy a book&#x3C;/title&#x3E;
+                &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://unpkg.com/bulma@0.9.0/css/bulma.min.css&#x22; /&#x3E;
+                &#x3C;script src=&#x22;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x3C;script src=&#x22;https://checkout.razorpay.com/v1/checkout.js&#x22;&#x3E;&#x3C;/script&#x3E;
+            &#x3C;/head&#x3E;
+            
+            &#x3C;body&#x3E;
+            
+                &#x3C;section class=&#x22;hero is-link is-fullheight&#x22;&#x3E;
+                    &#x3C;div class=&#x22;hero-body is-centered&#x22;&#x3E;
+                        &#x3C;div class=&#x22;container&#x22;&#x3E;
+                            &#x3C;div class=&#x22;columns is-centered is-vcentered&#x22;&#x3E;
+            
+                                &#x3C;div class=&#x22;column is-6&#x22;&#x3E;
+                                    &#x3C;p class=&#x22;title is-size-1&#x22;&#x3E;Just a book&#x3C;/p&#x3E;
+                                    &#x3C;p class=&#x22;subtitle is-size-4&#x22;&#x3E;You can now read this book just for &#x20B9;500&#x3C;/p&#x3E;
+            
+                                    &#x3C;button class=&#x22;button is-link is-light is-medium&#x22; id=&#x22;rzp-button1&#x22;&#x3E;Get the book&#x3C;/button&#x3E;
+                                &#x3C;/div&#x3E;
+            
+                                &#x3C;div class=&#x22;column is-5&#x22;&#x3E;
+                                    &#x3C;figure class=&#x22;image&#x22;&#x3E;
+            
+                                        &#x3C;img src=&#x22;https://images.unsplash.com/photo-1589998059171-988d887df646?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#x26;ixlib=rb-1.2.1&#x22;
+                                            style=&#x22;border-radius: 10px&#x22; alt=&#x22;&#x22;&#x3E;
+            
+                                    &#x3C;/figure&#x3E;
+                                &#x3C;/div&#x3E;
+            
+                            &#x3C;/div&#x3E;
+                        &#x3C;/div&#x3E;
+                    &#x3C;/div&#x3E;
+                &#x3C;/section&#x3E;
+                &#x3C;script&#x3E;
+            
+            
+                    document.getElementById(&#x27;rzp-button1&#x27;).onclick = function (e) {
+                        e.preventDefault();
+                        axios.post(&#x22;/order&#x22;).then((info) =&#x3E; {
+            
+                            console.log(info);
+            
+                            var options = {
+                                &#x22;key&#x22;: &#x22;rzp_test_uOlQOrpdrVORzm&#x22;, // Enter the Key ID generated from the Dashboard
+                                &#x22;name&#x22;: &#x22;Acme Corp&#x22;,
+                                &#x22;description&#x22;: &#x22;Test Transaction&#x22;,
+                                &#x22;order_id&#x22;: info.data.id, 
+                                &#x22;callback_url&#x22;: &#x22;/is-order-complete&#x22;,
+             
+                            }
+                            var rzp1 = new Razorpay(options);
+                            rzp1.open();
+                        })
+                    }
+                &#x3C;/script&#x3E;
+            
+            &#x3C;/body&#x3E;
+            
+            &#x3C;/html&#x3E;
+
+          </code>
+      </pre>
+    </div>
+
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -11</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        When a post request is made with the callback URL, we get payment_id, order_id and signature in return if the payment is successful. <br>
+        If the payment fails, an empty object is returned. <br>
+        Last step is to verify the signature. <br>
+        Here we are verifying if the payment is captured then it will show the message of "successful Payment". <br>
+      </p>
+      <pre>
+          <code class="language-javascript">
+            app.post("/is-order-complete",function(req,res){
+
+              razorpay.payments.fetch(req.body.razorpay_payment_id).then((paymentDocument)=>{
+            
+                if(paymentDocument.status =="captured")
+                {
+                  res.send("Payment successful");
+                }
+                else{
+            
+                  res.redirect("/");
+                }
+            });
+          });
+
+          </code>
+      </pre>
+    </div>
+
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -12</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        With this our payment gateway is integrated to our web-app. For testing keys like card number and UPI id for a successful payment, you can find these in the offical razorpay website. <br>
+        After a payment is done, you can check the details of the transaction in Dashboard -> Transactions on the razorpay site. If the status shows "captured" that means transaction is successful. <br>
+        The final index.js and razorpay.ejs files are shown below:
+        
+      </p>
+      <pre>
+          <code class="language-javascript">
+const express=require("express");
+const Razorpay=require("razorpay");
+
+let app=express(); 
+const razorpay=new Razorpay({
+
+  key_id: "rzp_test_uOlQOrpdrVORzm",
+  key_secret:"bqLHAV7Ih5mia212Hnx4h7Qi",
+});
+
+
+app.set('views','views');
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({extended:false}));
+
+app.get("/",function(req,res){
+
+  res.render("razorpay.ejs");
+});
+
+app.post("/order", function(req,res){
+
+  var options = {
+    amount: 50000 ,
+    currency: "INR" ,
+
+  };
+
+  razorpay.orders.create(options, function(err, order){
+    
+    console.log(order);
+    res.json(order);
+  });
+});
+
+app.post("/is-order-complete",function(req,res){
+
+  razorpay.payments.fetch(req.body.razorpay_payment_id).then((paymentDocument)=>{
+
+    if(paymentDocument.status =="captured")
+    {
+      res.send("Payment successful");
+    }
+    else{
+
+      res.redirect("/");
+    }
+});
+
+
+});
+app.listen(3000,function()
+{
+  console.log("server on port 3000");
+});
+
+
+
+          </code>
+      </pre>
+      <pre>
+        <code class="language-html">
+          &#x3C;!DOCTYPE html&#x3E;
+          &#x3C;html&#x3E;
+          
+          &#x3C;head&#x3E;
+              &#x3C;meta charset=&#x22;utf-8&#x22;&#x3E;
+              &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;IE=edge&#x22;&#x3E;
+              &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1&#x22;&#x3E;
+              &#x3C;title&#x3E;Buy a book&#x3C;/title&#x3E;
+              &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://unpkg.com/bulma@0.9.0/css/bulma.min.css&#x22; /&#x3E;
+              &#x3C;script src=&#x22;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+              &#x3C;script src=&#x22;https://checkout.razorpay.com/v1/checkout.js&#x22;&#x3E;&#x3C;/script&#x3E;
+          &#x3C;/head&#x3E;
+          
+          &#x3C;body&#x3E;
+          
+              &#x3C;section class=&#x22;hero is-link is-fullheight&#x22;&#x3E;
+                  &#x3C;div class=&#x22;hero-body is-centered&#x22;&#x3E;
+                      &#x3C;div class=&#x22;container&#x22;&#x3E;
+                          &#x3C;div class=&#x22;columns is-centered is-vcentered&#x22;&#x3E;
+          
+                              &#x3C;div class=&#x22;column is-6&#x22;&#x3E;
+                                  &#x3C;p class=&#x22;title is-size-1&#x22;&#x3E;Just a book&#x3C;/p&#x3E;
+                                  &#x3C;p class=&#x22;subtitle is-size-4&#x22;&#x3E;You can now read this book just for &#x20B9;500&#x3C;/p&#x3E;
+          
+                                  &#x3C;button class=&#x22;button is-link is-light is-medium&#x22; id=&#x22;rzp-button1&#x22;&#x3E;Get the book&#x3C;/button&#x3E;
+                              &#x3C;/div&#x3E;
+          
+                              &#x3C;div class=&#x22;column is-5&#x22;&#x3E;
+                                  &#x3C;figure class=&#x22;image&#x22;&#x3E;
+          
+                                      &#x3C;img src=&#x22;https://images.unsplash.com/photo-1589998059171-988d887df646?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#x26;ixlib=rb-1.2.1&#x22;
+                                          style=&#x22;border-radius: 10px&#x22; alt=&#x22;&#x22;&#x3E;
+          
+                                  &#x3C;/figure&#x3E;
+                              &#x3C;/div&#x3E;
+          
+                          &#x3C;/div&#x3E;
+                      &#x3C;/div&#x3E;
+                  &#x3C;/div&#x3E;
+              &#x3C;/section&#x3E;
+              &#x3C;script&#x3E;
+          
+          
+                  document.getElementById(&#x27;rzp-button1&#x27;).onclick = function (e) {
+                      e.preventDefault();
+                      axios.post(&#x22;/order&#x22;).then((info) =&#x3E; {
+          
+                          console.log(info);
+          
+                          var options = {
+                              &#x22;key&#x22;: &#x22;rzp_test_uOlQOrpdrVORzm&#x22;, // Enter the Key ID generated from the Dashboard
+                              &#x22;name&#x22;: &#x22;Acme Corp&#x22;,
+                              &#x22;description&#x22;: &#x22;Test Transaction&#x22;,
+                              &#x22;order_id&#x22;: info.data.id, //This is a sample Order ID. Pass the &#x60;id&#x60; obtained in the response of Step 1
+                              &#x22;callback_url&#x22;: &#x22;/is-order-complete&#x22;,
+           
+                          }
+                          var rzp1 = new Razorpay(options);
+                          rzp1.open();
+                      })
+                  }
+              &#x3C;/script&#x3E;
+          
+          &#x3C;/body&#x3E;
+          
+          &#x3C;/html&#x3E;
+        </code>
+      </pre>
+    </div>
+
+
+
 
     <script src="prism/prism-black.js"></script>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
