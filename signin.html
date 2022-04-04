@@ -1,0 +1,652 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCodes</title>
+    <link href="prism/prism-black.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<!-- body -->
+<body>
+
+
+    <!-- navbar -->
+
+    <nav class="px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800  sticky top-0 z-50  ">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+          <h2 class="flex items-center">
+              <img src="images/logo192.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+              <span class="self-center text-xl font-semibold whitespace-nowrap text-black">DevCodes</span>
+          </h2>
+          <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 " aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+            <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+              <li>
+                <a href="home.html" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+              </li>
+              <li>
+                <a href="contact.html" class="block py-2 pr-4 pl-3 text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+      
+    <!-- Main heading -->
+
+    <div class="flex justify-center">
+        <h1 class="bg-white font-bold mt-5 text-5xl p-5">Implementing Login and Sign-up functionality</h1>
+    </div>
+
+
+
+
+    <!-- content and image -->
+
+    <div class="flex justify-space p-8">
+        <p class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium">How many times have you went to your favourite e-commmerce or food ordering website and ordered using payment options like UPI, Debit Card, Credit Card, etc ? With this tutorial you can implement the same in your own web-app.</p>
+
+        <img src="images/login.png" alt="logo" class="mr-12 ml-16 w-80" />
+    </div>
+
+
+    <!-- Language and Framework Used -->
+
+
+    <div class="bg-white ml-10  w-fit p-3">
+        <p class="text-lg"><strong>Language/Framework used: </strong>Javascript, NodeJS</p>
+        <p class="text-lg"><strong>Last Updated: </strong>19-03-2022</p>
+    </div>
+
+
+    <!-- Steps -->
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+        <h3 class="text-xl"><strong>Step - 1</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        For this application, you need to install some packages. Run the following command in the terminal.
+        
+            <b>
+                <li>npm init -y</li>
+                <li>npm install mongodb</li>
+                <li>npm install express</li>
+                <li>npm install mongoose</li>
+                <li>npm install express-session</li>
+                <li>npm install connect-mongo</li>
+                <li>npm install body-parser</li>
+                <li>npm install ejs</li>
+            </b>
+        
+        </p>
+        <br/>
+        <h3 class="text-xl"><strong>Step - 2</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">Now create a new javascript file and 
+            enter the following code into that.
+
+        </p>
+            
+        <pre>
+            <code class="language-javascript">
+                const express = require('express');
+                const ejs = require('ejs');
+                const path = require('path');
+                const app = express();
+                const bodyParser = require('body-parser');
+                const mongoose = require('mongoose');
+                const session = require('express-session');
+                const MongoStore = require('connect-mongo');
+
+                const MongoDBURI = process.env.MONGO_URI || 'mongodb://localhost/MyDB';
+
+                mongoose.connect(MongoDBURI, { useUnifiedTopology: true,
+                    useNewUrlParser: true });
+                const db = mongoose.connection;
+                db.on('error', console.error.bind(console, 'connection error:'));
+                db.once('open', () => { });
+
+                app.use(session({
+                secret: 'work hard', resave: true, saveUninitialized: false,
+                store: MongoStore.create({ mongoUrl: MongoDBURI  })  }));
+
+                app.set('views', path.join(__dirname, 'views'));
+                app.set('view engine', 'ejs');
+
+                app.use(bodyParser.json());
+                app.use(bodyParser.urlencoded({ extended: false }));
+
+                app.use(express.static(__dirname + '/views'));
+
+                const index = require('./routes/index');
+                app.use('/', index);
+
+                // catch 404 and forward to error handler
+                app.use((req, res, next) => {
+                    const err = new Error('File Not Found');
+                    err.status = 404;
+                    next(err); 
+                });
+                // error handler
+                app.use((err, req, res, next) => {
+                    res.status(err.status || 500);
+                    res.send(err.message); 
+                });
+                app.listen(process.env.PORT || 3000, () => {
+                    console.log('Server is running on port 3000'); 
+                });
+
+                
+                
+    
+            </code>
+        </pre>
+        <h3 class="text-xl"><strong>Step - 3</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now, you need to create few embedded javascript 
+            files (.ejs) for different pages.
+
+        </p>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 1. data.ejs
+        </p>
+        <pre>
+            <code class="language-javascript">
+                &#x3C;!DOCTYPE html&#x3E;
+                &#x3C;html&#x3E;
+                
+                &#x3C;head&#x3E;
+                &#x9;&#x3C;title&#x3E;Login Register App&#x3C;/title&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&#x22;&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js&#x22;&#x3E;
+                &#x9;&#x3C;/script&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;./css/main.css&#x22;&#x3E;
+                &#x3C;/head&#x3E;
+                
+                &#x3C;body&#x3E;
+                &#x9;&#x3C;div class=&#x22;col-md-4 col-md-offset-4 form-card&#x22;&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;p&#x3E;Profile Detail&#x3C;/p&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;center&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;table class=&#x22;table table-hover text-center&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;tr&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;td&#x3E;Name &#x3C;/td&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;td&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;%= name %&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/td&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/tr&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;tr&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;td&#x3E;Email &#x3C;/td&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;td&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;%= email %&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/td&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x3C;/tr&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;/table&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;/center&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;abc&#x22; id=&#x22;LangTable&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;a href=&#x22;/logout&#x22;&#x3E;Logout&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x3C;/div&#x3E;
+                &#x3C;/body&#x3E;
+                
+                &#x3C;/html&#x3E;
+                
+                
+    
+            </code>
+        </pre>
+
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 2. forget.ejs
+        </p>
+        <pre>
+            <code class="language-javascript">
+               
+                &#x3C;!DOCTYPE html&#x3E;
+                &#x3C;html&#x3E;
+
+                &#x3C;head&#x3E;
+                &#x9;&#x3C;title&#x3E;Login Register App&#x3C;/title&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&#x22;&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js&#x22;&#x3E;
+                &#x9;&#x3C;/script&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;./css/main.css&#x22;&#x3E;
+
+                &#x9;&#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+                &#x9;&#x9;$(document).ready(() =&#x3E; {
+
+                &#x9;&#x9;&#x9;$(&#x22;#form2&#x22;).submit((event) =&#x3E; {
+
+                &#x9;&#x9;&#x9;&#x9;event.preventDefault();
+
+                &#x9;&#x9;&#x9;&#x9;$.ajax({
+                &#x9;&#x9;&#x9;&#x9;&#x9;type: &#x27;POST&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;url: &#x27;/forgetpass&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;data: $(&#x27;#form2&#x27;).serialize(),
+                &#x9;&#x9;&#x9;&#x9;&#x9;dataType: &#x22;json&#x22;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;success: (response) =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;//alert(&#x22;a&#x22;);
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;//console.log(response.Success);
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;$(&#x27;#form2&#x27;)[0].reset();
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;//alert(&#x22;abc&#x22;);
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = response.Success;
+
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;setTimeout(() =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = &#x22;&#x22;;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}, 3000);
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if (response.Success == &#x22;Password changed successfully!&#x22;) {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;aa&#x22;).click();
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;};
+                &#x9;&#x9;&#x9;&#x9;&#x9;},
+                &#x9;&#x9;&#x9;&#x9;&#x9;error: () =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;}
+                &#x9;&#x9;&#x9;&#x9;})
+                &#x9;&#x9;&#x9;});
+
+                &#x9;&#x9;});
+                &#x9;&#x3C;/script&#x3E;
+                &#x3C;/head&#x3E;
+                &#x3C;body&#x3E;
+                &#x9;&#x3C;div class=&#x22;col-md-4 col-md-offset-4 form-card&#x22;&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;p&#x3E;Change Password&#x3C;/p&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;form-group&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;form id=&#x22;form2&#x22; method=&#x22;post&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;text&#x22; name=&#x22;email&#x22; placeholder=&#x22;E-mail&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;password&#x22; placeholder=&#x22;Password&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;passwordConf&#x22; placeholder=&#x22;Confirm Password&#x22; required=&#x22;&#x22;
+                &#x9;&#x9;&#x9;&#x9;&#x9;class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;submit&#x22; value=&#x22;Change&#x22; class=&#x22;btn btn-success&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;/form&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;mssg bg-danger&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;span id=&#x22;check&#x22;&#x3E;&#x3C;/span&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;a href=&#x22;/login&#x22; id=&#x22;aa&#x22;&#x3E;&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;span&#x3E;Go back to &#x3C;/span&#x3E;&#x3C;a href=&#x22;/&#x22;&#x3E;Register&#x3C;/a&#x3E; or &#x3C;a href=&#x22;/login&#x22;&#x3E;Login&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x3C;/div&#x3E;
+                &#x3C;/body&#x3E;
+                &#x3C;/html&#x3E;
+
+    
+            </code>
+        </pre>
+
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 3. index.ejs
+        </p>
+        <pre>
+            <code class="language-javascript">
+               
+                &#x3C;!DOCTYPE html&#x3E;
+                &#x3C;html&#x3E;
+
+                &#x3C;head&#x3E;
+                &#x9;&#x3C;title&#x3E;Login Register App&#x3C;/title&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&#x22;&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js&#x22;&#x3E;
+                &#x9;&#x3C;/script&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;./css/main.css&#x22;&#x3E;
+
+
+                &#x9;&#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+                &#x9;&#x9;$(document).ready(() =&#x3E; {
+
+                &#x9;&#x9;&#x9;$(&#x22;#form1&#x22;).submit((event) =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;event.preventDefault();
+
+                &#x9;&#x9;&#x9;&#x9;$.ajax({
+                &#x9;&#x9;&#x9;&#x9;&#x9;type: &#x27;POST&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;url: &#x27;/&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;data: $(&#x27;#form1&#x27;).serialize(),
+                &#x9;&#x9;&#x9;&#x9;&#x9;dataType: &#x22;json&#x22;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;success: (response) =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;$(&#x27;#form1&#x27;)[0].reset();
+
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = response.Success;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;//ADD THIS CODE
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;setTimeout(() =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = &#x22;&#x22;;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}, 3000);
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if (response.Success == &#x22;You are regestered,You can login now.&#x22;) {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;aa&#x22;).click();
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;};
+                &#x9;&#x9;&#x9;&#x9;&#x9;},
+                &#x9;&#x9;&#x9;&#x9;&#x9;error: () =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;}
+                &#x9;&#x9;&#x9;&#x9;})
+                &#x9;&#x9;&#x9;});
+                &#x9;&#x9;});
+                &#x9;&#x3C;/script&#x3E;
+                &#x3C;/head&#x3E;
+
+                &#x3C;body&#x3E;
+
+                &#x9;&#x3C;div class=&#x22;col-md-4 col-md-offset-4 form-card&#x22;&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;p&#x3E;Register Now&#x3C;/p&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;form-group&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;form id=&#x22;form1&#x22; method=&#x22;post&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;text&#x22; name=&#x22;email&#x22; placeholder=&#x22;E-mail&#x22; required=&#x22;&#x22;
+                &#x9;&#x9;&#x9;&#x9;pattern=&#x22;[-!#$%&#x26;&#x27;*+\/0-9=?&#xE01;-&#xE59;A-Z^_a-z&#x60;{|}~](\.?[-!#$%&#x26;&#x27;*+\/0-9=?&#xE01;-&#xE59;A-Z^_a-z&#x60;{|}~])*@[&#xE01;-&#xE59;a-zA-Z0-9](-*\.?[&#xE01;-&#xE59;a-zA-Z0-9])*\.[&#xE01;-&#xE59;a-zA-Z](-?[&#xE01;-&#xE59;a-zA-Z0-9])+$&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;text&#x22; name=&#x22;username&#x22; placeholder=&#x22;Username&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;password&#x22; placeholder=&#x22;Password&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;passwordConf&#x22; placeholder=&#x22;Confirm Password&#x22; required=&#x22;&#x22;
+                &#x9;&#x9;&#x9;&#x9;&#x9;class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;submit&#x22; value=&#x22;Register&#x22; class=&#x22;btn btn-success&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;/form&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+
+                &#x9;&#x9;&#x3C;div class=&#x22;mssg bg-danger&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;span id=&#x22;check&#x22;&#x3E;&#x3C;/span&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;span&#x3E;Already Registered! &#x3C;a href=&#x22;/login&#x22;&#x3E;Login&#x3C;/a&#x3E;&#x3C;/span&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;a href=&#x22;/login&#x22; id=&#x22;aa&#x22;&#x3E;&#x3C;/a&#x3E; &#x3C;/div&#x3E;
+                &#x9;&#x3C;/div&#x3E;
+                &#x3C;/body&#x3E;
+                &#x3C;/html&#x3E;
+    
+            </code>
+        </pre>
+
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 4. login.ejs
+        </p>
+        <pre>
+            <code class="language-javascript">
+               
+                &#x3C;!DOCTYPE html&#x3E;
+                &#x3C;html&#x3E;
+
+                &#x3C;head&#x3E;
+                &#x9;&#x3C;title&#x3E;Login Register App&#x3C;/title&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&#x22;&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js&#x22;&#x3E;
+                &#x9;&#x3C;/script&#x3E;
+                &#x9;&#x3C;script src=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;./css/main.css&#x22;&#x3E;
+
+                &#x9;&#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+                &#x9;&#x9;$(document).ready(() =&#x3E; {
+
+                &#x9;&#x9;&#x9;$(&#x22;#form&#x22;).submit((event) =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;event.preventDefault();
+
+                &#x9;&#x9;&#x9;&#x9;$.ajax({
+                &#x9;&#x9;&#x9;&#x9;&#x9;type: &#x27;POST&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;url: &#x27;/login&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;data: $(&#x27;#form&#x27;).serialize(),
+                &#x9;&#x9;&#x9;&#x9;&#x9;dataType: &#x22;json&#x22;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;success: (response) =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;$(&#x27;#form&#x27;)[0].reset();
+
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = response.Success;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;//ADD THIS CODE
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;setTimeout(() =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = &#x22;&#x22;;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}, 3000);
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if (response.Success == &#x22;Success!&#x22;) {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;aa&#x22;).click();
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;};
+                &#x9;&#x9;&#x9;&#x9;&#x9;},
+                &#x9;&#x9;&#x9;&#x9;&#x9;error: () =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;}
+                &#x9;&#x9;&#x9;&#x9;})
+                &#x9;&#x9;&#x9;});
+
+                &#x9;&#x9;});
+                &#x9;&#x3C;/script&#x3E;
+                &#x3C;/head&#x3E;
+
+                &#x3C;body&#x3E;
+                &#x9;&#x3C;div class=&#x22;col-md-4 col-md-offset-4 form-card&#x22;&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;p&#x3E;Login&#x3C;/p&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;form-group &#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;form id=&#x22;form&#x22; method=&#x22;post&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;text&#x22; name=&#x22;email&#x22; pattern=&#x22;[-!#$%&#x26;&#x27;*+\/0-9=?&#xE01;-&#xE59;A-Z^_a-z&#x60;{|}~](\.?[-!#$%&#x26;&#x27;*+\/0-9=?&#xE01;-&#xE59;A-Z^_a-z&#x60;{|}~])*@[&#xE01;-&#xE59;a-zA-Z0-9](-*\.?[&#xE01;-&#xE59;a-zA-Z0-9])*\.[&#xE01;-&#xE59;a-zA-Z](-?[&#xE01;-&#xE59;a-zA-Z0-9])+$&#x22; placeholder=&#x22;E-mail&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;password&#x22; placeholder=&#x22;Password&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;submit&#x22; value=&#x22;Login&#x22; class=&#x22;btn btn-success&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;/form&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;mssg bg-danger&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;span id=&#x22;check&#x22;&#x3E;&#x3C;/span&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;a href=&#x22;/profile&#x22; id=&#x22;aa&#x22;&#x3E;&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;&#x3C;span&#x3E;Do you forgot password? &#x3C;/span&#x3E;&#x3C;a href=&#x22;/forgetpass&#x22;&#x3E;click here&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;span&#x3E;Do you want to register a new Account? &#x3C;/span&#x3E;&#x3C;a href=&#x22;/&#x22;&#x3E;click here&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x3C;/div&#x3E;
+                &#x3C;/body&#x3E;
+
+                &#x3C;/html&#x3E;
+                    
+            </code>
+        </pre>
+    
+        <h3 class="text-xl"><strong>Step - 4</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now, add a simple css file for better view 
+            of your page.
+        </p>
+
+        <pre>
+            <code class="language-css">
+                body{
+                    text-align: center !important;
+                }
+                p{
+                    margin-top: 20px;
+                    font-size: 30px;
+                }
+                input{
+                    text-align: center;
+                }
+                #LangTable{
+                    margin-bottom: 15px;
+                }
+                .form-card{
+                    background-color: #fff8eb;
+                    border-radius: 10px;
+                    margin-top: 130px;
+                }
+                .mssg{
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    border-radius: 5px;
+                }
+                
+            </code>
+        </pre>
+
+        <h3 class="text-xl"><strong>Step - 5</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now, routing this all functionalities together, create a folder name 'routes' and inside that 
+            create a file index.js and add the follow code.
+        </p>
+
+        <pre>
+            <code class="language-javascript">
+               
+                const express = require('express');
+                const router = express.Router();
+                const User = require('../models/user');
+
+                router.get('/', (req, res, next) => {
+                    return res.render('index.ejs');
+                });
+                router.post('/', (req, res, next) => {
+                    let personInfo = req.body;
+
+                    if (!personInfo.email || !personInfo.username || !personInfo.password || !personInfo.passwordConf) {
+                        res.send();
+                    } else {
+                        if (personInfo.password == personInfo.passwordConf) {
+
+                            User.findOne({ email: personInfo.email }, (err, data) => {
+                                if (!data) {
+                                    let c;
+                                    User.findOne({}, (err, data) => {
+
+                                        if (data) {
+                                            c = data.unique_id + 1;
+                                        } else {
+                                            c = 1;
+                                        }
+
+                                        let newPerson = new User({
+                                            unique_id: c,
+                                            email: personInfo.email,
+                                            username: personInfo.username,
+                                            password: personInfo.password,
+                                            passwordConf: personInfo.passwordConf
+                                        });
+
+                                        newPerson.save((err, Person) => {
+                                            if (err)
+                                                console.log(err);
+                                            else
+                                                console.log('Success');
+                                        });
+
+                                    }).sort({ _id: -1 }).limit(1);
+                                    res.send({ "Success": "You are regestered,You can login now." });
+                                } else {
+                                    res.send({ "Success": "Email is already used." });
+                                }
+
+                            });
+                        } else {
+                            res.send({ "Success": "password is not matched" });
+                        }
+                    }
+                });
+
+                router.get('/login', (req, res, next) => {
+                    return res.render('login.ejs');
+                });
+
+                router.post('/login', (req, res, next) => {
+                    User.findOne({ email: req.body.email }, (err, data) => {
+                        if (data) {
+
+                            if (data.password == req.body.password) {
+                                req.session.userId = data.unique_id;
+                                res.send({ "Success": "Success!" });
+                            } else {
+                                res.send({ "Success": "Wrong password!" });
+                            }
+                        } else {
+                            res.send({ "Success": "This Email Is not regestered!" });
+                        }
+                    });
+                });
+
+                router.get('/profile', (req, res, next) => {
+                    User.findOne({ unique_id: req.session.userId }, (err, data) => {
+                        if (!data) {
+                            res.redirect('/');
+                        } else {
+                            return res.render('data.ejs', { "name": data.username, "email": data.email });
+                        }
+                    });
+                });
+
+                router.get('/logout', (req, res, next) => {
+                    if (req.session) {
+                        // delete session object
+                        req.session.destroy((err) => {
+                            if (err) {
+                                return next(err);
+                            } else {
+                                return res.redirect('/');
+                            }
+                        });
+                    }
+                });
+
+                router.get('/forgetpass', (req, res, next) => {
+                    res.render("forget.ejs");
+                });
+
+                router.post('/forgetpass', (req, res, next) => {
+                    User.findOne({ email: req.body.email }, (err, data) => {
+                        if (!data) {
+                            res.send({ "Success": "This Email Is not regestered!" });
+                        } else {
+                            if (req.body.password == req.body.passwordConf) {
+                                data.password = req.body.password;
+                                data.passwordConf = req.body.passwordConf;
+
+                                data.save((err, Person) => {
+                                    if (err)
+                                        console.log(err);
+                                    else
+                                        console.log('Success');
+                                    res.send({ "Success": "Password changed!" });
+                                });
+                            } else {
+                                res.send({ "Success": "Password does not matched! Both Password should be same." });
+                            }
+                        }
+                    });
+
+                });
+                module.exports = router;
+                            
+                
+            </code>
+        </pre>
+
+    </div>
+    
+    <h3 class="text-xl"><strong>Step - 5</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> In this step, you have to create a database schema 
+            for user details. for that create a folder named models and inside that create a file user.js
+             and add the following code.
+        </p>
+
+        <pre>
+            <code class="language-javascript">
+                const mongoose = require('mongoose');
+                const Schema = mongoose.Schema;
+                
+                userSchema = new Schema( {
+                    
+                    unique_id: Number,
+                    email: String,
+                    username: String,
+                    password: String,
+                    passwordConf: String,
+                    createdAt: {
+                        type: Date,
+                        default: Date.now
+                    }
+                }),
+                User = mongoose.model('User', userSchema);
+                
+                module.exports = User;
+            </code>
+        </pre>
+
+    <script src="prism/prism-black.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
