@@ -1,0 +1,212 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCodes</title>
+    <link href="prism/prism-black.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<!-- body -->
+<body>
+
+
+    <!-- navbar -->
+
+    <nav class="px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800  sticky top-0 z-50  ">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+          <h2 class="flex items-center">
+              <img src="images/logo192.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+              <span class="self-center text-xl font-semibold whitespace-nowrap text-black">DevCodes</span>
+          </h2>
+          <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 " aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+            <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+              <li>
+                <a href="home.html" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+              </li>
+              <li>
+                <a href="contact.html" class="block py-2 pr-4 pl-3 text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+      
+    <!-- Main heading -->
+
+    <div class="flex justify-center">
+        <h1 class="bg-white font-bold mt-5 text-5xl p-5">Adding Social Media buttons/links for your website</h1>
+    </div>
+
+
+
+
+    <!-- content and image -->
+
+    <div class="flex justify-space p-8">
+        <p class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium">At the end of any website, you will see a list of buttons of various social media websites so that you can connect with them on those sites. In this tutorial, you will learn how to add these icons to your own site.</p>
+
+        <img src="images/icons1.png" alt="logo" class="mr-12 ml-16 w-80" />
+    </div>
+
+
+    <!-- Language and Framework Used -->
+
+
+    <div class="bg-white ml-10  w-fit p-3">
+        <p class="text-lg"><strong>Language/Framework used: </strong>Javascript, NodeJS</p>
+        <p class="text-lg"><strong>Last Updated: </strong>15-03-2022</p>
+    </div>
+
+
+    <!-- Steps -->
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+        <h3 class="text-xl"><strong>Step -1</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        In your HTML file, inside the head section, use the following CDN link to import icons.
+        </p>
+
+        <pre>
+            <code class="language-html">
+                &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&#x22;&#x3E;
+            </code>
+        </pre>
+
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+        <h3 class="text-xl"><strong>Step -2</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">
+          Use the following code in your html file. These are the links of official pages of IndiGO on facebook, linkedin, twitter, instagram, etc. You can change these links in the href attribute with links of your own site pages. The classes used here are for using the icons of the respective social media sites. 
+        </p>
+        <pre>
+              <code class="language-html">
+  
+                &#x3C;a href=&#x22;https://www.facebook.com/goindigo.in/&#x22; target=&#x22;_blank&#x22; rel=&#x22;noopener noreferrer&#x22; class=&#x22;fa fa-facebook&#x22;&#x3E;&#x3C;/a&#x3E;
+                &#x3C;a href=&#x22;https://twitter.com/IndiGo6E?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor&#x22; target=&#x22;_blank&#x22; rel=&#x22;noopener noreferrer&#x22; class=&#x22;fa fa-twitter&#x22;&#x3E;&#x3C;/a&#x3E;
+                &#x3C;a href=&#x22;https://www.instagram.com/indigo.6e/?hl=en&#x22; target=&#x22;_blank&#x22; rel=&#x22;noopener noreferrer&#x22; class=&#x22;fa fa-instagram&#x22;&#x3E;&#x3C;/a&#x3E;
+                &#x3C;a href=&#x22;https://www.youtube.com/channel/UCia1zq8LyeiMgKNMDdslhkw&#x22; target=&#x22;_blank&#x22; rel=&#x22;noopener noreferrer&#x22; class=&#x22;fa fa-youtube&#x22;&#x3E;&#x3C;/a&#x3E;
+                &#x3C;a href=&#x22;https://in.linkedin.com/company/indigo-airlines&#x22; target=&#x22;_blank&#x22; rel=&#x22;noopener noreferrer&#x22; class=&#x22;fa fa-linkedin&#x22;&#x3E;&#x3C;/a&#x3E;
+              </code>
+          </pre>
+      </div>
+
+
+      <div class="ml-10 my-10 mr-12 flex flex-col">
+        <h3 class="text-xl"><strong>Step -2</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">
+          At last add this css for styling your icons. The CSS added here is the one which looks similar to the actual icons. However you can change the colour, style, shape, size according to your convenience by changing the css.
+        </p>
+        <pre>
+              <code class="language-css">
+                /* For styling the buttons */
+                .fa {
+                    padding: 20px;
+                    font-size: 30px;
+                    width: 30px;
+                    text-align: center;
+                    text-decoration: none;
+                    border-radius: 50%;
+                  }
+                
+                
+                  
+                /*For adding a hover effect*/
+                .fa:hover {
+                  opacity: 0.7;
+                  }
+                                  
+              </code>
+          </pre>
+
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+            Add the following styling for changing the colour of icon of facebook.
+          </p>
+          <pre>
+            <code class="language-css">
+              .fa-facebook {
+                background: #3B5998;
+                color: white;
+              }
+                                
+            </code>
+          </pre>
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+            Add the following styling for changing the colour of icon of twitter.
+          </p>
+          <pre>
+            <code class="language-css">
+              .fa-twitter {
+                background: #55ACEE;
+                color: white;
+              }
+                                
+            </code>
+          </pre>
+
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+            Add the following styling for changing the colour of icon of youtube.
+          </p>
+          <pre>
+            <code class="language-css">
+              .fa-youtube{
+
+                background: #bb0000;
+                color: white;
+              }
+                                
+            </code>
+          </pre>
+
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+            Add the following styling for changing the colour of icon of linkedin.
+          </p>
+          <pre>
+            <code class="language-css">
+              .fa-linkedin{
+
+                background: #007bb5;
+                color: white;
+              }
+
+            </code>
+          </pre>
+
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+            Add the following styling for changing the colour of icon of instagram.
+          </p>
+          <pre>
+            <code class="language-css">
+              .fa-instagram{
+                background: #125688;
+                color: white;
+              }
+
+
+            </code>
+          </pre>
+
+
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+            You can change these colours and the styling of button according to your own preference.
+          </p>
+      </div>
+    
+    
+
+    <script src="prism/prism-black.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
