@@ -67,76 +67,137 @@
 
 
     <div class="bg-white ml-10  w-fit p-3">
-        <p class="text-lg"><strong>Language/Framework used: </strong>Javascript, React</p>
-        <p class="text-lg"><strong>Last Updated: </strong>25-03-2022</p>
+        <p class="text-lg"><strong>Language/Framework used: </strong>Javascript, HTML</p>
+        <p class="text-lg"><strong>Last Updated: </strong>20-03-2022</p>
     </div>
 
 
     <!-- Steps -->
-
     <div class="ml-10 my-10 mr-12 flex flex-col">
-        <h3 class="text-xl"><strong>Step - 1</strong></h3>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg">
-        First of all, you have to create a react application. For that run the following command in
-        the terminal.
-        <br/>
-        <b> npm install -g create-react-app</b>
-        <br/>
-        <b> npx creat-react-app  demo-app</b>
-        <h3 class="text-xl"><strong>Step - 2</strong></h3>
-        </p>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now, Go to your project directory and open app.js file 
-            and replace the existing code with the following code.
-        </p>
-        
+      <h3 class="text-xl"><strong>Step - 1</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+      Create a new file google.html and add the following code to setup a basic html file template. 
+      </p>
+      <pre>
+          <code class="language-html">
+            &#x3C;html&#x3E;
+
+            &#x3C;head&#x3E;
+            &#x9;&#x3C;title&#x3E;Google login&#x3C;/title&#x3E;
+            &#x3C;/head&#x3E;
             
-        <pre>
-            <code class="language-javascript">
-                import React, { Component } from 'react'
-                import GoogleLogin from 'react-google-login'
-                export class App extends Component {
-
-                responseGoogle=(response)=>{
-                console.log(response);
-                console.log(response.profileObj);
-                }
-
-                render() {
-                return (
-                <!-- <div>
-                <GoogleLogin
-                clientId="1071066717069-6d3h3m8no5s9lgdr1pp8l37h8q8js15n.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={this.responseGoogle}
-                onFailure={this.responseGoogle}
-                cookiePolicy={'single_host_origin'}
-                >
-                </div> -->
-                &#x3C;div&#x3E;
-                    &#x3C;GoogleLogin
-                    clientId=&#x22;1071066717069-6d3h3m8no5s9lgdr1pp8l37h8q8js15n.apps.googleusercontent.com&#x22;
-                    buttonText=&#x22;Login&#x22;
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
-                    cookiePolicy={&#x27;single_host_origin&#x27;}
-                    &#x3E;
-                &#x3C;/div&#x3E;
-
-                )           
-                }
-                }
-
-                export default App
-
-
-            </code>
-        </pre>
-        <h3 class="text-xl"><strong>Step - 3</strong></h3>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg">Now you can see the google sign-in button after running 
-            your file on port 3000 (by default). </p>
+            &#x3C;body&#x3E;
+            
+            &#x9;&#x3C;h3&#x3E; Welcome to google authentication tutorial.&#x3C;/h3&#x3E;  
+            &#x9;
+            &#x3C;/body&#x3E;
+       
+            &#x3C;/html&#x3E;
+          </code>
+      </pre>
     </div>
     
-   
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step - 2</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+      Now, for accessing the google APIs you need to generate your client id from the official website <a href="https://console.cloud.google.com"><u>https://console.cloud.google.com</u></a>
+      </br> </br>
+      If you don't know how to get your client id you can visit this <a href="https://www.youtube.com/watch?v=tjCxuDh5e9I&ab_channel=NetCastonWebTechZone"><b><u>Link</u></b></a> for the referance.  
+    </br> </br>
+    After generating your client id, you need to add this two line in your html file under head section.
+      </p>
+      <pre>
+          <code class="language-html">
+            &#x3C;meta name=&#x22;google-signin-client_id&#x22; content=&#x22;1071066717069-6d3h3m8no5s9lgdr1pp8l37h8q8js15n.apps.googleusercontent.com&#x22;&#x3E;
+            &#x9;&#x3C;script src=&#x22;https://apis.google.com/js/platform.js&#x22; async defer&#x3E;&#x3C;/script&#x3E;
+          
+          </code>
+      </pre>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+      <b>Note: </b> You need to replace the client id in the content with your respective client id. 
+      </p>
+
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step - 3</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Now, to put the Google button to your webpage, google has its own class so we just need to add that class in our body section of html file.
+      </p>
+      <pre>
+          <code class="language-html">
+            &#x3C;div class=&#x22;g-signin2&#x22; data-onsuccess=&#x22;signIn&#x22;&#x3E;&#x3C;/div&#x3E;
+          </code>
+      </pre>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+      Here, we have created a signIn function to check whether we are successfully logged in or not. If it is successfull we will get 
+      the details of that user on the console.
+      </br></br>
+      so, copy the following script code and paste it after the body section ends.
+      </p>
+      <pre>
+        <code class="language-html">
+          &#x3C;script&#x3E;
+          &#x9;function signIn(googleUser){
+          &#x9;&#x9;console.log(&#x27;User is &#x27; + JSON.stringify(googleUser.getBasicProfile()))
+          &#x9;}
+
+          &#x3C;/script&#x3E;
+
+        </code>
+    </pre>
+
+    </div>
+
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step - 3</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+      Now, we will add one sign out button for signing out the user after logging in.
+    </br></br>
+    So, copy the foolowing line and add it in to the body section.
+      </p>
+      <pre>
+          <code class="language-html">
+            &#x3C;button onclick=&#x22;signOut()&#x22;&#x3E;Sign out&#x3C;/button&#x3E;
+
+          </code>
+      </pre>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Here, we have created a signOut function to check whether we are successfully logged out or not. If it is successfull we will get 
+        the message on the console.
+      </p>
+
+    </br></br>
+    so, copy the following code and paste it in the script tag.
+    </p>
+    <pre>
+      <code class="language-javascript">
+        function signOut(){
+          gapi.auth2.getAuthInstance().signOut().then(function(){
+            console.log("User signed out successfully.")
+          })
+        }
+      </code>
+  </pre>
+    </div>
+      
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step - 4</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+      For running this file, you need to create a simple http server. So, go to terminal and run the following command 
+      to create a simple http server.
+      </p>
+      <pre>
+        <code class="language-javascript">
+          python3 -m http.server 3000
+        </code>
+    </pre>
+    <p class="bg-white mt-3 mb-1 p-3 text-lg">
+    <b>Note: </b> Here, you need to set the port number same as you have set while creating your google client id.  
+    </p>
+    </div>
+
     <script src="prism/prism-black.js"></script>
     <script src="app.js"></script>
 </body>
