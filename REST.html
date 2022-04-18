@@ -1,0 +1,286 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCodes</title>
+    <link href="prism/prism-black.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<!-- body -->
+<body>
+
+
+    <!-- navbar -->
+
+    <nav class="px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800  sticky top-0 z-50  ">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+          <h2 class="flex items-center">
+              <img src="images/logo192.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+              <span class="self-center text-xl font-semibold whitespace-nowrap text-black">DevCodes</span>
+          </h2>
+          <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 " aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+            <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+              <li>
+                <a href="home.html" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+              </li>
+              <li>
+                <a href="contact.html" class="block py-2 pr-4 pl-3 text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+      
+    <!-- Main heading -->
+
+    <div class="flex justify-center">
+        <h1 class="bg-white font-bold mt-5 text-5xl p-5">Build your own RESTful APIs</h1>
+    </div>
+
+
+
+
+    <!-- content and image -->
+
+    <div class="flex justify-space p-8">
+        <p class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium">Many of you have seen and used 
+            APIs that other peoples have created. So, In this tutorial we are going to learn all about how 
+            to build your very own RESTful APIs from beginning to end. REST stands for REpresentational State Transfer.
+        </p>
+
+        <img src="images/rest.jpg" alt="logo" class="mr-12 ml-16 w-80" />
+    </div>
+
+
+    <!-- Language and Framework Used -->
+
+
+    <div class="bg-white ml-10  w-fit p-3">
+        <p class="text-lg"><strong>Language/Framework used: </strong>Javascript, NodeJS</p>
+        <p class="text-lg"><strong>Last Updated: </strong>25-03-2022</p>
+    </div>
+
+
+    <!-- Steps -->
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+        <h3 class="text-xl"><strong>Step - 1</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        When RESTful APIs comes, you all are going to think about GET and POST methods. So for sending that requests
+     you need to install <b>Postman</b> in your device so that we can easily send the GET, POST and DELETE request to our server.
+        </p>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">  
+    <h3 class="text-xl"><strong>Step - 2</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 
+            Create a folder and open it in vs-code. 
+            In the terminal run the following commands to download the necessary packages.
+        </p>
+        <pre>
+            <code class="language-javascript">
+
+              npm init -y
+              npm i express
+              npm i body-parser
+              npm i mongoose
+              npm i ejs
+  
+            </code>
+        </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+        <h3 class="text-xl"><strong>Step - 3</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 
+            Now, for set up the server, create a file named app.js and paste the following piece of code.
+        </p>
+        <pre>
+            <code class="language-javascript">
+
+                const express = require("express");
+                const mongoose = require("mongoose");
+                const bodyParser = require("body-parser");
+                const ejs = require("ejs");
+                const res = require("express/lib/response");
+                
+                const app = express();
+                
+                app.listen(3000,function(){
+                    console.log("Server is running on port 3000");
+                });
+  
+            </code>
+        </pre>
+        </div>
+
+        <div class="ml-10 my-10 mr-12 flex flex-col">
+            <h3 class="text-xl"><strong>Step -4</strong></h3>
+            <p class="bg-white mt-3 mb-1 p-3 text-lg">
+              Add the following startup code for ejs in app.js file.
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    app.set('view engine' , 'ejs');
+                
+                    app.use(bodyParser.urlencoded({ extended: true }));
+                    
+                    app.use(express.static("public"));
+                </code>
+            </pre>
+          </div>
+      
+          <div class="ml-10 my-10 mr-12 flex flex-col">
+              <h3 class="text-xl"><strong>Step - 5</strong></h3>
+              <p class="bg-white mt-3 mb-1 p-3 text-lg">
+                In this tutorial  for demo purpose we have used Mongodb database named wikipedia which contains different articles. In that 
+                articles we have two fields title and content which both contains string values.
+              </br>
+              So, our next step is to connect our server to the database. So paste the following code in app.js file.
+              </p>
+              <pre>
+                <code class="language-javascript">
+                    mongoose.connect("mongodb://localhost:27017/wikipedia", 
+                    {
+                        useNewUrlParser: true
+                    });
+                </code>
+            </pre>
+          </div>
+
+          <div class="ml-10 my-10 mr-12 flex flex-col">
+            <h3 class="text-xl"><strong>Step - 6</strong></h3>
+            <p class="bg-white mt-3 mb-1 p-3 text-lg">
+              Our next step is to create Schema for our articles and define a model. for that purpose copy the following code. 
+            </p>
+            <pre>
+              <code class="language-javascript">
+                const articleSchema = {
+                    title: String,
+                    content: String
+                };
+                
+                const Article = mongoose.model("Article", articleSchema);
+                
+              </code>
+          </pre>
+        </div>
+    
+        <div class="ml-10 my-10 mr-12 flex flex-col">
+            <h3 class="text-xl"><strong>Step - 7</strong></h3>
+            <p class="bg-white mt-3 mb-1 p-3 text-lg">
+               Now, we are all done with the setup and its time to create our first method which is <b>GET</b> method. 
+               This method will help us to fetch all the articles from our database and display it to the browser. 
+            </br>
+            We can implement this using express by specifying the route and adding the callback function.
+             So copy the following piece of code in app.js to implement the GET method. 
+            </p>
+            <pre>
+              <code class="language-javascript">
+
+                app.get("/articles", function(req,res){
+                    Article.find(function(err,foundArticles){
+                        if(!err){
+                            res.send(foundArticles);
+                        }
+                        else{
+                            res.send(err);
+                        }
+                        
+                    });
+                });
+                
+              </code>
+          </pre>
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+            You can see the results by starting the server and then visit the site from <u>http://localhost:3000/articles</u>  
+          </p>
+        </div>
+        
+        <div class="ml-10 my-10 mr-12 flex flex-col">
+            <h3 class="text-xl"><strong>Step - 8</strong></h3>
+            <p class="bg-white mt-3 mb-1 p-3 text-lg">
+               Now, in POST method user wants to add some data in our database. Here we do not have created 
+               any html forms to get the data from user so we will use Postman to collect the data and post request.
+            </br>
+            Add the following code for POST method in your app.js file. 
+            </p>
+            <pre>
+              <code class="language-javascript">
+
+                app.post("/articles", function(req,res){
+    
+                    const newArticle = new Article({
+                        title: req.body.title,
+                        content: req.body.content
+                    });
+                    newArticle.save(function(err){
+                        if(!err){
+                            res.send("Document added successfully");
+                        }
+                        else{
+                            res.send(err);
+                        }
+                    });
+                });
+                
+                
+              </code>
+          </pre>
+          <p class="bg-white mt-3 mb-1 p-3 text-lg">
+              Now, start the server by running app.js and open postman. Change the url to <u>http://localhost:3000/articles</u> 
+              and select the request type to post. 
+          </br></br>
+          After that, in body tab add the details you want to send to the server. In our case, two keys would be title and content 
+          followed by values for them respectively.
+        </br></br>
+          After adding the details hit the send button on postman and you will get the message of succ sending the data.
+          </p>
+        </div>
+
+        <div class="ml-10 my-10 mr-12 flex flex-col">
+            <h3 class="text-xl"><strong>Step -9</strong></h3>
+            <p class="bg-white mt-3 mb-1 p-3 text-lg">
+              In DELETE method, when user send the delet request to server, all the articles that are exist on 
+              our database will deleted. So copy the following code to app.js file to implement DELETE method.
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    app.delete("/articles" , function(req , res){
+                        Article.deleteMany(function(err){
+                            if(!err)
+                            {
+                                res.send("Articles deleted successfully");
+                            }
+                            else{
+                                res.send(err);
+                            }
+                        });
+                    });
+                </code>
+            </pre>
+
+            <p class="bg-white mt-3 mb-1 p-3 text-lg">
+                Now, start the server by running app.js and open postman. Change the url to <u>http://localhost:3000/articles</u> 
+                and select the request type to delete.
+            </br></br>
+              Now, when you hit the send button you can see the changes in the database that all the articles will be deleted.
+            </p>
+          </div>
+    
+    <script src="prism/prism-black.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
