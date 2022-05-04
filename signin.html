@@ -55,7 +55,13 @@
     <!-- content and image -->
 
     <div class="flex justify-space p-8">
-        <p class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium">How many times have you went to your favourite e-commmerce or food ordering website and ordered using payment options like UPI, Debit Card, Credit Card, etc ? With this tutorial you can implement the same in your own web-app.</p>
+        <p class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium">
+            User authentication has became an integral part of any web application which
+            keeps the unauthorised users away for accessing that particular
+            website or information.  In this tutorial we
+            have implemented one commonly used authentication with
+            the help of user email id and password. 
+        </p>
 
         <img src="images/login.png" alt="logo" class="mr-12 ml-16 w-80" />
     </div>
@@ -91,8 +97,10 @@
         </p>
         <br/>
         <h3 class="text-xl"><strong>Step - 2</strong></h3>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg">Now create a new javascript file and 
-            enter the following code into that.
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">Now create a new javascript file in which we will create
+            a server and express app. Also we will import the packages and connect our server with Mongodb database in the backend.
+        </br>
+        Copy the following code to import the packages required code for start the server.
 
         </p>
             
@@ -101,46 +109,14 @@
                 const express = require('express');
                 const ejs = require('ejs');
                 const path = require('path');
-                const app = express();
                 const bodyParser = require('body-parser');
                 const mongoose = require('mongoose');
                 const session = require('express-session');
                 const MongoStore = require('connect-mongo');
 
-                const MongoDBURI = process.env.MONGO_URI || 'mongodb://localhost/MyDB';
 
-                mongoose.connect(MongoDBURI, { useUnifiedTopology: true,
-                    useNewUrlParser: true });
-                const db = mongoose.connection;
-                db.on('error', console.error.bind(console, 'connection error:'));
-                db.once('open', () => { });
-
-                app.use(session({
-                secret: 'work hard', resave: true, saveUninitialized: false,
-                store: MongoStore.create({ mongoUrl: MongoDBURI  })  }));
-
-                app.set('views', path.join(__dirname, 'views'));
-                app.set('view engine', 'ejs');
-
-                app.use(bodyParser.json());
-                app.use(bodyParser.urlencoded({ extended: false }));
-
-                app.use(express.static(__dirname + '/views'));
-
-                const index = require('./routes/index');
-                app.use('/', index);
-
-                // catch 404 and forward to error handler
-                app.use((req, res, next) => {
-                    const err = new Error('File Not Found');
-                    err.status = 404;
-                    next(err); 
-                });
-                // error handler
-                app.use((err, req, res, next) => {
-                    res.status(err.status || 500);
-                    res.send(err.message); 
-                });
+                const app = express();
+                
                 app.listen(process.env.PORT || 3000, () => {
                     console.log('Server is running on port 3000'); 
                 });
@@ -150,12 +126,60 @@
     
             </code>
         </pre>
-        <h3 class="text-xl"><strong>Step - 3</strong></h3>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now, you need to create few embedded javascript 
-            files (.ejs) for different pages.
+
+        <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Add the following startup code in your server file and then add the snippet for connect the database.
+        
 
         </p>
-        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 1. data.ejs
+        <pre>
+            <code class="language-javascript">
+                app.use(session({
+                    secret: 'work hard', resave: true, saveUninitialized: false,
+                    store: MongoStore.create({ mongoUrl: MongoDBURI  })  }));
+    
+                    app.set('views', path.join(__dirname, 'views'));
+                    app.set('view engine', 'ejs');
+    
+                    app.use(bodyParser.json());
+                    app.use(bodyParser.urlencoded({ extended: false }));
+    
+                    app.use(express.static(__dirname + '/views'));
+    
+                    const index = require('./routes/index');
+                    app.use('/', index);
+    
+                    // catch 404 and forward to error handler
+                    app.use((req, res, next) => {
+                        const err = new Error('File Not Found');
+                        err.status = 404;
+                        next(err); 
+                    });
+                    // error handler
+                    app.use((err, req, res, next) => {
+                        res.status(err.status || 500);
+                        res.send(err.message); 
+                    });
+            </code>
+        </pre>
+        <pre>
+            <code class="language-javascript">
+                const MongoDBURI = process.env.MONGO_URI || 'mongodb://localhost/MyDB';
+
+                mongoose.connect(MongoDBURI, { useUnifiedTopology: true,
+                    useNewUrlParser: true });
+                const db = mongoose.connection;
+                db.on('error', console.error.bind(console, 'connection error:'));
+                db.once('open', () => { });
+            </code>
+        </pre>       
+        
+        <h3 class="text-xl"><strong>Step - 3</strong></h3>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now, you need to create few embedded javascript 
+            files (.ejs) for different pages of the functionalities.
+
+        </p>
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 1. data.ejs  (For basic template for user's data-collapse-toggle)
         </p>
         <pre>
             <code class="language-javascript">
@@ -207,7 +231,7 @@
             </code>
         </pre>
 
-        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 2. forget.ejs
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Copy the following code in new forget.ejs file.(To implement forget password functionality)
         </p>
         <pre>
             <code class="language-javascript">
@@ -222,7 +246,42 @@
                 &#x9;&#x3C;/script&#x3E;
                 &#x9;&#x3C;script src=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
                 &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;./css/main.css&#x22;&#x3E;
+                
+                &#x3C;/head&#x3E;
+                &#x3C;body&#x3E;
+                &#x9;&#x3C;div class=&#x22;col-md-4 col-md-offset-4 form-card&#x22;&#x3E;
+                &#x9;&#x9;&#x3C;div&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;p&#x3E;Change Password&#x3C;/p&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;form-group&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;form id=&#x22;form2&#x22; method=&#x22;post&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;text&#x22; name=&#x22;email&#x22; placeholder=&#x22;E-mail&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;password&#x22; placeholder=&#x22;Password&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;passwordConf&#x22; placeholder=&#x22;Confirm Password&#x22; required=&#x22;&#x22;
+                &#x9;&#x9;&#x9;&#x9;&#x9;class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
+                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;submit&#x22; value=&#x22;Change&#x22; class=&#x22;btn btn-success&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;/form&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div class=&#x22;mssg bg-danger&#x22;&#x3E;
+                &#x9;&#x9;&#x9;&#x3C;span id=&#x22;check&#x22;&#x3E;&#x3C;/span&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;a href=&#x22;/login&#x22; id=&#x22;aa&#x22;&#x3E;&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;span&#x3E;Go back to &#x3C;/span&#x3E;&#x3C;a href=&#x22;/&#x22;&#x3E;Register&#x3C;/a&#x3E; or &#x3C;a href=&#x22;/login&#x22;&#x3E;Login&#x3C;/a&#x3E;
+                &#x9;&#x9;&#x3C;/div&#x3E;
+                &#x9;&#x3C;/div&#x3E;
+                &#x3C;/body&#x3E;
+                &#x3C;/html&#x3E;
 
+    
+            </code>
+        </pre>
+
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now add the following script code in head section to process the data.
+        </p>
+        <pre>
+            <code class="language-javascript">
+               
                 &#x9;&#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
                 &#x9;&#x9;$(document).ready(() =&#x3E; {
 
@@ -256,37 +315,13 @@
 
                 &#x9;&#x9;});
                 &#x9;&#x3C;/script&#x3E;
-                &#x3C;/head&#x3E;
-                &#x3C;body&#x3E;
-                &#x9;&#x3C;div class=&#x22;col-md-4 col-md-offset-4 form-card&#x22;&#x3E;
-                &#x9;&#x9;&#x3C;div&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;p&#x3E;Change Password&#x3C;/p&#x3E;
-                &#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x3C;div class=&#x22;form-group&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;form id=&#x22;form2&#x22; method=&#x22;post&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;text&#x22; name=&#x22;email&#x22; placeholder=&#x22;E-mail&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;password&#x22; placeholder=&#x22;Password&#x22; required=&#x22;&#x22; class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;password&#x22; name=&#x22;passwordConf&#x22; placeholder=&#x22;Confirm Password&#x22; required=&#x22;&#x22;
-                &#x9;&#x9;&#x9;&#x9;&#x9;class=&#x22;form-control&#x22;&#x3E;&#x3C;br /&#x3E;
-                &#x9;&#x9;&#x9;&#x9;&#x3C;input type=&#x22;submit&#x22; value=&#x22;Change&#x22; class=&#x22;btn btn-success&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;/form&#x3E;
-                &#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x3C;div class=&#x22;mssg bg-danger&#x22;&#x3E;
-                &#x9;&#x9;&#x9;&#x3C;span id=&#x22;check&#x22;&#x3E;&#x3C;/span&#x3E;
-                &#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;a href=&#x22;/login&#x22; id=&#x22;aa&#x22;&#x3E;&#x3C;/a&#x3E;
-                &#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x9;&#x3C;div id=&#x22;LangTable&#x22;&#x3E;&#x3C;span&#x3E;Go back to &#x3C;/span&#x3E;&#x3C;a href=&#x22;/&#x22;&#x3E;Register&#x3C;/a&#x3E; or &#x3C;a href=&#x22;/login&#x22;&#x3E;Login&#x3C;/a&#x3E;
-                &#x9;&#x9;&#x3C;/div&#x3E;
-                &#x9;&#x3C;/div&#x3E;
-                &#x3C;/body&#x3E;
-                &#x3C;/html&#x3E;
-
-    
+                
             </code>
         </pre>
 
-        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 3. index.ejs
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> 3. index.ejs (For create a form to get the details of the user)
+        </br>
+        Copy the following html code in your file.
         </p>
         <pre>
             <code class="language-javascript">
@@ -302,36 +337,6 @@
                 &#x9;&#x3C;script src=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
                 &#x9;&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;./css/main.css&#x22;&#x3E;
 
-
-                &#x9;&#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
-                &#x9;&#x9;$(document).ready(() =&#x3E; {
-
-                &#x9;&#x9;&#x9;$(&#x22;#form1&#x22;).submit((event) =&#x3E; {
-                &#x9;&#x9;&#x9;&#x9;event.preventDefault();
-
-                &#x9;&#x9;&#x9;&#x9;$.ajax({
-                &#x9;&#x9;&#x9;&#x9;&#x9;type: &#x27;POST&#x27;,
-                &#x9;&#x9;&#x9;&#x9;&#x9;url: &#x27;/&#x27;,
-                &#x9;&#x9;&#x9;&#x9;&#x9;data: $(&#x27;#form1&#x27;).serialize(),
-                &#x9;&#x9;&#x9;&#x9;&#x9;dataType: &#x22;json&#x22;,
-                &#x9;&#x9;&#x9;&#x9;&#x9;success: (response) =&#x3E; {
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;$(&#x27;#form1&#x27;)[0].reset();
-
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = response.Success;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;//ADD THIS CODE
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;setTimeout(() =&#x3E; {
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = &#x22;&#x22;;
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}, 3000);
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if (response.Success == &#x22;You are regestered,You can login now.&#x22;) {
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;aa&#x22;).click();
-                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;};
-                &#x9;&#x9;&#x9;&#x9;&#x9;},
-                &#x9;&#x9;&#x9;&#x9;&#x9;error: () =&#x3E; {
-                &#x9;&#x9;&#x9;&#x9;&#x9;}
-                &#x9;&#x9;&#x9;&#x9;})
-                &#x9;&#x9;&#x9;});
-                &#x9;&#x9;});
-                &#x9;&#x3C;/script&#x3E;
                 &#x3C;/head&#x3E;
 
                 &#x3C;body&#x3E;
@@ -365,6 +370,45 @@
     
             </code>
         </pre>
+
+        <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now add the following code in the head section which
+            will used to collect the data from the form and send to the server. 
+        </p>
+        <pre>
+            <code class="language-javascript">
+                &#x9;&#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+                &#x9;&#x9;$(document).ready(() =&#x3E; {
+
+                &#x9;&#x9;&#x9;$(&#x22;#form1&#x22;).submit((event) =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;event.preventDefault();
+
+                &#x9;&#x9;&#x9;&#x9;$.ajax({
+                &#x9;&#x9;&#x9;&#x9;&#x9;type: &#x27;POST&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;url: &#x27;/&#x27;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;data: $(&#x27;#form1&#x27;).serialize(),
+                &#x9;&#x9;&#x9;&#x9;&#x9;dataType: &#x22;json&#x22;,
+                &#x9;&#x9;&#x9;&#x9;&#x9;success: (response) =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;$(&#x27;#form1&#x27;)[0].reset();
+
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = response.Success;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;//ADD THIS CODE
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;setTimeout(() =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;check&#x22;).innerHTML = &#x22;&#x22;;
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}, 3000);
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if (response.Success == &#x22;You are regestered,You can login now.&#x22;) {
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;document.getElementById(&#x22;aa&#x22;).click();
+                &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;};
+                &#x9;&#x9;&#x9;&#x9;&#x9;},
+                &#x9;&#x9;&#x9;&#x9;&#x9;error: () =&#x3E; {
+                &#x9;&#x9;&#x9;&#x9;&#x9;}
+                &#x9;&#x9;&#x9;&#x9;})
+                &#x9;&#x9;&#x9;});
+                &#x9;&#x9;});
+                &#x9;&#x3C;/script&#x3E;
+        </code>
+        </pre>
+    
+
 
         <p class="bg-white mt-3 mb-1 p-3 text-lg"> 4. login.ejs
         </p>
@@ -440,9 +484,10 @@
 
                 &#x3C;/html&#x3E;
                     
-            </code>
+         </code>
         </pre>
-    
+
+        
         <h3 class="text-xl"><strong>Step - 4</strong></h3>
         <p class="bg-white mt-3 mb-1 p-3 text-lg"> Now, add a simple css file for better view 
             of your page.
