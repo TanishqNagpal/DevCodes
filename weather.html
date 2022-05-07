@@ -1,0 +1,337 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevCodes</title>
+    <link href="prism/prism-black.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <!-- body -->
+  <body>
+    <!-- navbar -->
+
+    <nav class="px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 sticky top-0 z-50">
+      <div
+        class="container flex flex-wrap justify-between items-center mx-auto"
+      >
+        <h2 class="flex items-center">
+          <img
+            src="images/logo192.png"
+            class="mr-3 h-6 sm:h-9"
+            alt="Flowbite Logo"
+          />
+          <span
+            class="self-center text-xl font-semibold whitespace-nowrap text-black"
+            >DevCodes</span
+          >
+        </h2>
+        <button
+          data-collapse-toggle="mobile-menu"
+          type="button"
+          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <svg
+            class="hidden w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+          <ul
+            class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+          >
+            <li>
+              <a
+                href="home.html"
+                class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                class="block py-2 pr-4 pl-3 text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main heading -->
+
+    <div class="flex justify-center">
+      <h1 class="bg-white font-bold mt-5 text-5xl p-5">
+        Using the Weather API
+      </h1>
+    </div>
+
+    <!-- content and image -->
+
+    <div class="flex justify-space p-8">
+      <p class="bg-white flex justify-center items-center p-2 mr-5 text-xl font-medium">
+      In this tutorial we will make a twitter bot which tweets a certain message when we run our nodejs application. The purpose of this tutorial is to understand how a twitter API can be used for different functionalities.
+
+      </p>
+
+      <img
+        src="images/weather.jpg"
+        alt="logo"
+        class="mr-12 ml-16 w-80"
+      />
+    </div>
+
+    <!-- Language and Framework Used -->
+
+    <div class="bg-white ml-10 w-fit p-3">
+      <p class="text-lg">
+        <strong>Language/Framework used: </strong>Javascript, NodeJS, HTML
+      </p>
+      <p class="text-lg"><strong>Last Updated: </strong>15-03-2022</p>
+    </div>
+
+
+    <!-- github -->
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Link to entire code</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg object-contain">
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="color:blue;">https://github.com/TanishqNagpal/DevCodes</a>
+        
+      </p>
+
+
+    </div>
+
+
+
+    <!-- Steps -->
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -1</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Create a folder with the name of WeatherAPI and make two files index.html and app.js inside it.
+        <br><br>
+        In the terminal run: <strong>npm init</strong> for adding node modules to your project.
+        <br><br>
+        Run <strong>npm i express</strong> for installing the express npm modules.
+        <br><br>
+        After this require your express files and initialise a new express app with this startup code.
+      </p>
+
+      <pre>
+        <code class="language-javascript">
+
+            const express=require("express");
+            const app=express();
+            app.listen(3000,function(){
+
+                console.log("server running fine");
+            })
+        </code>
+      </pre>
+
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -2</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Now in this project we will be using the <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer" style="color:blue;">openWeather API</a> to get data regarding the weather. There are different services and data that this API can provide however we will be using <a href="https://openweathermap.org/current" target="_blank" rel="noopener noreferrer" style="color:blue;">Current Weather Data</a> as we need the weather conditions at a time for a particular city. Now in this link we have the documentation for the API call. You will see links to paths which are used for calling the API and several parameters like city, latitude, longitude, units, etc. We can use these parameters according to the information we need from the API. As we need weather information for a particular city we will be using parameters like city and units. There's another parameter named appid which is used for the api key. Every user has his unique api key which is the way to access the api.
+        <br><br>
+        Now we need to understand how can we use this path of the api and access data according to our use. 
+        <br><br>
+        For this purpose we will use npm native <strong>https</strong> for accessing data from outside server. Also you are using console logging the reponse to see what kind of data we have received from the api. Run the site on local host 3000 to see the same.
+      </p>
+      <pre>
+        <code class="language-javascript">
+
+            app.get("/", function(req,res){
+
+                const url=https://api.openweathermap.org/data/2.5/weather?q=london&appid={appid}  //add your own api key in appid.
+
+                https.get(url, function(response){
+
+                    console.log(response);
+                })
+            })
+        </code>
+      </pre>
+
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -3</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        When we console log the response we get variety of data. We need to parse the JSON data to extract the ones which we need to show to the user. Here we will be using the "temperature" and "weather description" from the response.
+
+      </p>
+      <pre>
+          <code class="language-javascript">
+          app.get("/", function(req,res){
+
+              const url=https://api.openweathermap.org/data/2.5/weather?q=london&appid={appid}  //add your own api key in appid.
+
+              https.get(url, function(response){
+
+                  console.log(response);
+                  response.on("data", function(data){
+      
+                    const weatherData=JSON.parse(data);
+                    const temp=weatherData.main.temp;
+                    const weatherDesc=weatherData.weather[0].description;
+                    
+                })
+              })
+          })
+
+          </code>
+      </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -4</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Till now, we have the data which we want to show to the user. But this data is of a particular city which is london. No we will create a HTML file which asks the user to input the city and we will show the response to that.
+      </p>
+      <pre>
+          <code class="language-html">
+            &#x3C;html lang=&#x22;en&#x22;&#x3E;
+            &#x3C;head&#x3E;
+                &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
+                &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;IE=edge&#x22;&#x3E;
+                &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
+                &#x3C;title&#x3E;Document&#x3C;/title&#x3E;
+            &#x3C;/head&#x3E;
+            &#x3C;body&#x3E;
+                &#x3C;form class=&#x22;&#x22; action=&#x22;/&#x22; method=&#x22;post&#x22;&#x3E;
+                    &#x3C;label for=&#x22;cityInput&#x22;&#x3E;City Name&#x3C;/label&#x3E;
+                    &#x3C;input type=&#x22;text&#x22; id=&#x22;cityInput&#x22; name=&#x22;cityName&#x22;&#x3E;
+                    &#x3C;button type=&#x22;submit&#x22;&#x3E;GO&#x3C;/button&#x3E;
+            
+                &#x3C;/form&#x3E;
+            
+            &#x3C;/body&#x3E;
+            &#x3C;/html&#x3E;
+
+          </code>
+      </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -5</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Now before proceeding we need to install another package which is body-parser using commmand <strong>npm i body-parser</strong> in the terminal. This package will allow to look through the body and fetch the data.
+        <br>
+        Then we need to send the HTML file so that the user can input the city.
+      </p>
+      <pre>
+          <code class="language-javascript">
+            const bodyParser=require("body-parser");
+
+            app.use(bodyParser.urlencoded({extended:true}));
+
+            app.get("/", function(req,res){
+
+              res.sendFile(__dirname + "/index.html")
+
+            })
+
+          </code>
+      </pre>
+    </div>
+
+    <div class="ml-10 my-10 mr-12 flex flex-col">
+      <h3 class="text-xl"><strong>Step -6</strong></h3>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        Last step is we make changes to the code so that it is query specific. <br><br>
+        After parsing the data, the response is sent to the front-end(user).
+      </p>
+      <pre>
+        <code class="language-javascript">
+          const express=require("express");
+
+          const https=require("https")
+          
+          const app=express();
+          
+          const bodyParser=require("body-parser");
+          
+          app.use(bodyParser.urlencoded({extended:true}));
+          
+          app.get("/", function(req,res){
+          
+              res.sendFile(__dirname + "/index.html")
+          
+          })
+          
+          app.post("/", function(req,res){
+          
+              console.log(req.body.cityName)
+          
+              const query=req.body.cityName
+              const apikey=""  //use your own api key.
+              const unit="metric"
+          
+          
+              const url="https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apikey + "&units=" + unit;
+          
+              https.get(url,function(response){
+          
+                  console.log(response.statusCode);
+          
+                  response.on("data", function(data){
+          
+                      const weatherData=JSON.parse(data);
+                      const temp=weatherData.main.temp;
+                      const weatherDesc=weatherData.weather[0].description;
+                      const icon=weatherData.weather[0].icon
+                      res.write("<p>The weather is currently " + weatherDesc + "</p>")
+                      res.write("<h1>The Temparture in "+ query + " is "+ temp+ " degree celsius</h1>")
+                      res.send();
+                  })
+              })
+          
+          });
+
+
+        </code>
+      </pre>
+      <p class="bg-white mt-3 mb-1 p-3 text-lg">
+        <strong>NOTE:</strong> Here we can extract more data like feels-like temperature, precipitation details, etc according to the problem statement. The method of doing that will be the same as shown above.
+      </p>
+    </div>
+
+
+
+
+
+    <script src="prism/prism-black.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
